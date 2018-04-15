@@ -1,0 +1,34 @@
+Dagger2:
+
+- Dagger2 is not a DI it's only an annotation processor (just a code generatorand also butterknife is a code generator) so Dagger2 is a code generator that allow for a well written code with DI in mind to use the DI without letting you write a lot of boilerplate code.
+
+- It's not a bad practice to draw up the dependancy graph on a white paper before implement it for example:
+Example1:
+Activity
+- GithubService                  - Picassa
+ - Retrofit                       -OkHttp3Downloader
+  - Gson   - OKHttp                  -OkHttp
+   -Logger                - Cache
+                           -File
+Example2:
+- Fragment
+ - Presenter
+  - Interactor
+   - DataCalls -Interceptor
+
+Example3:
+- Fragment
+ - Presenter
+  - Interactor
+   - UserInfoDataRepository
+    - userInfoDataStoreFactory    - userInfoMapper
+     - userInfoCache -Retrofit
+
+- Videos then SO Questions
+
+------------------
+It seems like we build a diffrent independent components
+1 for Application contains all the app needed instances
+1 for fragments contains all the fragment needed instances
+1 for activity contains all the activity needed instances
+
